@@ -1,7 +1,7 @@
 """""""""""""""""""""""""""""""""""
 "	Tyler Warren				  "
 "	vim 8.1.2269 on Ubuntu 20.04  "
-"	v1.0 Updated 7-27-21		  "
+"	v1.1 Updated 7-28-21		  "
 "	Place at ~/.vim/vimrc		  "
 """""""""""""""""""""""""""""""""""
 
@@ -36,9 +36,7 @@ runtime! debian.vim
 
 " Vim5 and later versions support syntax highlighting. Uncommenting the next
 " line enables syntax highlighting by default.
-if has("syntax")
-  syntax on
-endif
+
 
 " If using a dark background within the editing area and syntax highlighting
 " turn on this option as well
@@ -73,11 +71,34 @@ set number
 " Set tabs and shiftwidth to 4 spaces
 set tabstop=4
 set shiftwidth=4
+set softtabstop=4
+set smartindent
+" Uses vimrc in current directory
+set exrc
+" Uses relative numbering from current cursor
+set relativenumber
+" Removes error ding
+set noerrorbells
+" Searches as you type
+set incsearch
+" Keeps an 8 line buffer on either side of the screen
+set scrolloff=8
+" Adds bar to the left for linting and markers
+set signcolumn=yes
+syntax on
 
 " Vim-Plug
 call plug#begin('~/.vim/plugged')
 
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' }
+Plug 'gruvbox-community/gruvbox'
+Plug 'ycm-core/YouCompleteMe'
 
 call plug#end()
+
+" Sets vim theme
+colorscheme gruvbox
+set background=dark
+let mapleader = " "
+
+noremap E <end>
+noremap B <home>
