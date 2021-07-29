@@ -1,17 +1,12 @@
 """""""""""""""""""""""""""""""""""""
 "	Tyler Warren					"
 "	vim 8.1.2269 on Ubuntu 20.04	"
-"	v1.2 Updated 7-29-21			"
+"	v1.11 Updated 7-29-21			"
 "	Place at ~/.vim/vimrc			"
 """""""""""""""""""""""""""""""""""""
 
-" Base file copied from /usr/share/vim
-" TODO Port behave-dark theme: https://github.com/fnky/behave-theme
-" TODO Setup COC autocomplete
-"
 " Requirements
 " 1) vim-plug
-" 2) jedi-language-server (pip)
 
 " All system-wide defaults are set in $VIMRUNTIME/debian.vim and sourced by
 " the call to :runtime you can find below.  If you wish to change any of those
@@ -94,6 +89,9 @@ Plug 'preservim/nerdcommenter'
 
 call plug#end()
 
+" YCM settings
+ let g:ycm_confirm_extra_conf = 0
+
 " Sets vim theme
 colorscheme gruvbox
 set background=dark
@@ -102,5 +100,5 @@ let mapleader = " "
 noremap L <end>
 noremap H <home>
 
-" Found from: https://stackoverflow.com/questions/597687/how-to-quickly-change-variable-names-in-vim
+" Found at: https://stackoverflow.com/questions/597687/how-to-quickly-change-variable-names-in-vim
 nnoremap <leader>r gd:%s/<C-R>///gc<left><left><left>
