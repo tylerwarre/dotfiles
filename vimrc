@@ -1,9 +1,9 @@
-"""""""""""""""""""""""""""""""""""
-"	Tyler Warren				  "
-"	vim 8.1.2269 on Ubuntu 20.04  "
-"	v1.1 Updated 7-28-21		  "
-"	Place at ~/.vim/vimrc		  "
-"""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""
+"	Tyler Warren					"
+"	vim 8.1.2269 on Ubuntu 20.04	"
+"	v1.2 Updated 7-29-21			"
+"	Place at ~/.vim/vimrc			"
+"""""""""""""""""""""""""""""""""""""
 
 " Base file copied from /usr/share/vim
 " TODO Port behave-dark theme: https://github.com/fnky/behave-theme
@@ -75,8 +75,6 @@ set softtabstop=4
 set smartindent
 " Uses vimrc in current directory
 set exrc
-" Uses relative numbering from current cursor
-set relativenumber
 " Removes error ding
 set noerrorbells
 " Searches as you type
@@ -92,6 +90,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'gruvbox-community/gruvbox'
 Plug 'ycm-core/YouCompleteMe'
+Plug 'preservim/nerdcommenter'
 
 call plug#end()
 
@@ -100,5 +99,8 @@ colorscheme gruvbox
 set background=dark
 let mapleader = " "
 
-noremap E <end>
-noremap B <home>
+noremap L <end>
+noremap H <home>
+
+" Found from: https://stackoverflow.com/questions/597687/how-to-quickly-change-variable-names-in-vim
+nnoremap <leader>r gd:%s/<C-R>///gc<left><left><left>
