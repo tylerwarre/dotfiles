@@ -1,7 +1,7 @@
 """""""""""""""""""""""""""""""""""""
 "	Tyler Warren					"
 "	vim 8.1.2269 on Ubuntu 20.04	"
-"	v1.12 Updated 7-29-21			"
+"	v1.3 Updated 7-29-21			"
 "	Place at ~/.vim/vimrc			"
 """""""""""""""""""""""""""""""""""""
 
@@ -78,6 +78,8 @@ set incsearch
 set scrolloff=8
 " Adds bar to the left for linting and markers
 set signcolumn=yes
+" Keeps statusline always visibile
+set laststatus=2
 syntax on
 
 " Vim-Plug
@@ -86,11 +88,15 @@ call plug#begin('~/.vim/plugged')
 Plug 'gruvbox-community/gruvbox'
 Plug 'ycm-core/YouCompleteMe'
 Plug 'preservim/nerdcommenter'
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
 " YCM settings
- let g:ycm_confirm_extra_conf = 0
+let g:ycm_confirm_extra_conf = 0
+
+" vim-fugitive
+set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
 
 " Sets vim theme
 colorscheme gruvbox
