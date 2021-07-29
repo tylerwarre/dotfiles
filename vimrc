@@ -1,7 +1,7 @@
 """""""""""""""""""""""""""""""""""""
 "	Tyler Warren					"
 "	vim 8.1.2269 on Ubuntu 20.04	"
-"	v1.11 Updated 7-29-21			"
+"	v1.12 Updated 7-29-21			"
 "	Place at ~/.vim/vimrc			"
 """""""""""""""""""""""""""""""""""""
 
@@ -101,4 +101,5 @@ noremap L <end>
 noremap H <home>
 
 " Found at: https://stackoverflow.com/questions/597687/how-to-quickly-change-variable-names-in-vim
-nnoremap <leader>r gd:%s/<C-R>///gc<left><left><left>
+" Currently setup to do a global refactor
+nnoremap <leader>r gD:%s/<C-R>///gc<left><left><left>
