@@ -1,8 +1,8 @@
 #################################
-#	Tyler Warren				#
-#	bash 5.0.17 on Ubuntu 20.04	#
-#	v1.1 Updated 7-30-21		#
-# 	Place at ~/.bashrc			#
+#   Tyler Warren                #
+#   bash 5.0.17 on Ubuntu 20.04 #
+#   v1.1 Updated 7-30-21        #
+#   Place at ~/.bashrc          #
 #################################
 
 # ~/.bashrc: executed by bash(1) for non-login shells.
