@@ -1,7 +1,7 @@
 #################################
 #	Tyler Warren				#
 #	bash 5.0.17 on Ubuntu 20.04	#
-#	v1.0 Updated 7-27-21		#
+#	v1.1 Updated 7-30-21		#
 # 	Place at ~/.bashrc			#
 #################################
 
@@ -127,3 +127,4 @@ export PATH=/opt/java/jdk-11.0.9.1+1/bin:$PATH
 export PATH=/opt/java/jre-11.0.9.1+1/bin:$PATH
 export VISUAL=vim
 export EDITOR=vim
+export GPG_TTY=$(tty)
