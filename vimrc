@@ -89,6 +89,8 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'ycm-core/YouCompleteMe'
 Plug 'preservim/nerdcommenter'
 Plug 'tpope/vim-fugitive'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
@@ -97,6 +99,9 @@ let g:ycm_confirm_extra_conf = 0
 
 " vim-fugitive
 set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
+
+" vim-airline
+let g:aireline_theme='base16_gruvbox_dark_medium.vim'
 
 " Sets vim theme
 colorscheme gruvbox
