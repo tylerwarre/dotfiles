@@ -1,7 +1,7 @@
 """""""""""""""""""""""""""""""""""""
 "	Tyler Warren					"
 "	vim 8.1.2269 on Ubuntu 20.04	"
-"	v1.3 Updated 7-29-21			"
+"	v1.4 Updated 8-05-21			"
 "	Place at ~/.vim/vimrc			"
 """""""""""""""""""""""""""""""""""""
 
@@ -80,6 +80,8 @@ set scrolloff=8
 set signcolumn=yes
 " Keeps statusline always visibile
 set laststatus=2
+" Keeps all open buffer loaded into memory
+set hidden
 syntax on
 
 " Vim-Plug
@@ -91,8 +93,14 @@ Plug 'preservim/nerdcommenter'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'preservim/nerdtree'
 
 call plug#end()
+
+" Sets vim theme
+colorscheme gruvbox
+set background=dark
+let mapleader = " "
 
 " YCM settings
 let g:ycm_confirm_extra_conf = 0
@@ -103,14 +111,30 @@ set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
 " vim-airline
 let g:aireline_theme='base16_gruvbox_dark_medium.vim'
 
-" Sets vim theme
-colorscheme gruvbox
-set background=dark
-let mapleader = " "
+" nerdtree
+nnoremap <leader>n :NERDTreeToggle<CR>
+" Start NERDTree and put the cursor back in the other window.
+autocmd VimEnter * NERDTree | wincmd p
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
+" Quick home/end accesss
 noremap L <end>
 noremap H <home>
+" Remove the need to press Ctrl+w to switch windows
+nnoremap <leader>h <C-W>h
+nnoremap <leader>j <C-W>j
+nnoremap <leader>k <C-W>k
+nnoremap <leader>l <C-W>l
+nnoremap <leader>z <C-W>z
+
+" Don't leave visual mode when indenting
+vnoremap > >gv
+vnoremap < <gv
 
 " Found at: https://stackoverflow.com/questions/597687/how-to-quickly-change-variable-names-in-vim
 " Currently setup to do a global refactor
 nnoremap <leader>r gD:%s/<C-R>///gc<left><left><left>
+
+" Jumps back to previous file
+nnoremap gr :e#<CR>
