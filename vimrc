@@ -1,7 +1,7 @@
 """""""""""""""""""""""""""""""""""""
 "	Tyler Warren					"
 "	vim 8.1.2269 on Ubuntu 20.04	"
-"	v1.4 Updated 8-05-21			"
+"	v1.5 Updated 8-09-21			"
 "	Place at ~/.vim/vimrc			"
 """""""""""""""""""""""""""""""""""""
 
@@ -80,6 +80,8 @@ set scrolloff=8
 set signcolumn=yes
 " Keeps statusline always visibile
 set laststatus=2
+" Removed redundant mode display with airline
+set noshowmode
 " Keeps all open buffer loaded into memory
 set hidden
 syntax on
