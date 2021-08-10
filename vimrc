@@ -1,7 +1,7 @@
 """""""""""""""""""""""""""""""""""""
 "	Tyler Warren					"
 "	vim 8.1.2269 on Ubuntu 20.04	"
-"	v1.5 Updated 8-09-21			"
+"	v1.6 Updated 8-10-21			"
 "	Place at ~/.vim/vimrc			"
 """""""""""""""""""""""""""""""""""""
 
@@ -112,6 +112,8 @@ set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
 
 " vim-airline
 let g:aireline_theme='base16_gruvbox_dark_medium.vim'
+" Enables only mixed-indent file notifiers
+let g:airline#extensions#whitespace#checks = [ 'mixed-indent-file' ]
 
 " nerdtree
 nnoremap <leader>n :NERDTreeToggle<CR>
