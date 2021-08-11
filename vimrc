@@ -1,7 +1,7 @@
 """""""""""""""""""""""""""""""""""""
 "	Tyler Warren					"
 "	vim 8.1.2269 on Ubuntu 20.04	"
-"	v1.6 Updated 8-10-21			"
+"	v1.7 Updated 8-11-21			"
 "	Place at ~/.vim/vimrc			"
 """""""""""""""""""""""""""""""""""""
 
@@ -103,6 +103,7 @@ call plug#end()
 colorscheme gruvbox
 set background=dark
 let mapleader = " "
+hi Normal guibg=NONE ctermbg=NONE
 
 " YCM settings
 let g:ycm_confirm_extra_conf = 0
