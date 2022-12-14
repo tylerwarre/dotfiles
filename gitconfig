@@ -1,6 +1,6 @@
 [user]
-	email = tyler@thewalloffire.tech
+	email = tyler@warrens.one
 	name = tylerwarre
-	signingkey = 3BA2BEC975F7E794
+	signingkey = 6B212D7486AEF8CD118DF5163698499F0CD7BF12
 [commit]
 	gpgsign = true
