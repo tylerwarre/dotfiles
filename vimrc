@@ -107,6 +107,7 @@ hi Normal guibg=NONE ctermbg=NONE
 
 " YCM settings
 let g:ycm_confirm_extra_conf = 0
+nnoremap <leader>d :YcmCompleter GetDoc<CR>
 
 " vim-fugitive
 set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
