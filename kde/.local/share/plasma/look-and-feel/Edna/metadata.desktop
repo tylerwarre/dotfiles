@@ -1,0 +1,13 @@
+[Desktop Entry]
+Comment=fit dark
+Name=Edna
+X-KDE-PluginInfo-Author=jomada
+X-KDE-PluginInfo-Category=Plasma Look And Feel
+X-KDE-PluginInfo-Email=gicalucejo@gmail.com
+X-KDE-PluginInfo-EnabledByDefault=true
+X-KDE-PluginInfo-License=LGPL 3+
+X-KDE-PluginInfo-Name=Edna
+X-KDE-PluginInfo-Version=2.7
+X-KDE-PluginInfo-Website=https://seduccionlinux.wordpress.com
+X-KDE-ServiceTypes=Plasma/LookAndFeel
+X-KPackage-Dependencies=kns://colorschemes.knsrc/api.kde-look.org/1158510,kns://plasma-themes.knsrc/api.kde-look.org/1117813,kns://aurorae.knsrc/api.kde-look.org/1367056,kns://icons.knsrc/api.kde-look.org/1256209,kns://xcursor.knsrc/api.kde-look.org/1411743,kns://wallpaper.knsrc/api.kde-look.org/1528963
