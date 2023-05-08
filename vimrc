@@ -105,6 +105,10 @@ colorscheme gruvbox
 set background=dark
 let mapleader = " "
 hi Normal guibg=NONE ctermbg=NONE
+" Adds spell check
+set spelllang=en_us
+set spell
+hi SpellBad cterm=underline
 
 " YCM settings
 let g:ycm_confirm_extra_conf = 0
