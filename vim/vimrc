@@ -97,6 +97,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'preservim/nerdtree'
 Plug 'jkramer/vim-checkbox'
+Plug 'dhruvasagar/vim-table-mode'
 
 call plug#end()
 
@@ -105,10 +106,13 @@ colorscheme gruvbox
 set background=dark
 let mapleader = " "
 hi Normal guibg=NONE ctermbg=NONE
-" Adds spell check
+
+" Configures spell check
 set spelllang=en_us
-set spell
 hi SpellBad cterm=underline
+
+" Preserves format of clipboard text
+set paste
 
 " YCM settings
 let g:ycm_confirm_extra_conf = 0
@@ -149,3 +153,9 @@ nnoremap <leader>r gD:%s/<C-R>///gc<left><left><left>
 
 " Jumps back to previous file
 nnoremap gr :e#<CR>
+
+" Specifies file type specific configurations
+"" MarkDown
+autocmd FileType markdown setlocal spell
+"" Text
+autocmd FileType text setlocal spell 
