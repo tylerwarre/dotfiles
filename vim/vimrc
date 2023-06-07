@@ -86,6 +86,9 @@ set noshowmode
 set hidden
 syntax on
 
+" Tab Settings
+"set tabline=%t
+
 " Vim-Plug
 call plug#begin('~/.vim/plugged')
 
@@ -125,6 +128,12 @@ set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
 let g:aireline_theme='base16_gruvbox_dark_medium.vim'
 " Enables only mixed-indent file notifiers
 let g:airline#extensions#whitespace#checks = [ 'mixed-indent-file' ]
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#tab_nr_type = 1
+let g:airline#extensions#tabline#show_splits = 0
+let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 " nerdtree
 nnoremap <leader>n :NERDTreeToggle<CR>
@@ -133,15 +142,32 @@ nnoremap <leader>n :NERDTreeToggle<CR>
 " Exit Vim if NERDTree is the only window remaining in the only tab.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
+" vim-table-mode
+let g:table_mode_corner='|'
+
 " Quick home/end accesss
 noremap L <end>
 noremap H <home>
 " Remove the need to press Ctrl+w to switch windows
-nnoremap <leader>h <C-W>h
-nnoremap <leader>j <C-W>j
-nnoremap <leader>k <C-W>k
-nnoremap <leader>l <C-W>l
-nnoremap <leader>z <C-W>z
+nnoremap <leader>H <C-W>h
+nnoremap <leader>J <C-W>j
+nnoremap <leader>K <C-W>k
+nnoremap <leader>L <C-W>l
+nnoremap <leader>Z <C-W>z
+
+" Change tabs with leader + vim arrow keys
+nnoremap <leader>h gT
+nnoremap <leader>l gt
+nnoremap <leader>1 1gt
+nnoremap <leader>2 2gt
+nnoremap <leader>3 3gt
+nnoremap <leader>4 4gt
+nnoremap <leader>5 5gt
+nnoremap <leader>6 6gt
+nnoremap <leader>7 7gt
+nnoremap <leader>8 8gt
+nnoremap <leader>9 9gt
+nnoremap <leader>0 10gt
 
 " Don't leave visual mode when indenting
 vnoremap > >gv
@@ -154,8 +180,13 @@ nnoremap <leader>r gD:%s/<C-R>///gc<left><left><left>
 " Jumps back to previous file
 nnoremap gr :e#<CR>
 
+" Allows jumping through marks
+nnoremap ]] :cnext<CR>
+nnoremap [[ :cprevious<CR>
+
 " Specifies file type specific configurations
 "" MarkDown
 autocmd FileType markdown setlocal spell
+autocmd BufWrite *.md :vimgrep /^# [A-Z]\{1,}/ %
 "" Text
 autocmd FileType text setlocal spell 
