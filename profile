@@ -27,7 +27,7 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 if [ ! -z $TMUX ]; then
-	$HOME/.tmux/plugins/tmux-logging/scripts/toggle_logging.sh
+	        $HOME/.tmux/plugins/tmux-logging/scripts/toggle_logging.sh
 fi
 
 finish()
