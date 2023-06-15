@@ -19,3 +19,12 @@ passthrough
 PowerShell
 SMB
 kerberos
+tcp
+config
+Exfilled
+kerberoastable
+webserver
+misconfigurations
+IoT
+SQLi
+MSSQL
