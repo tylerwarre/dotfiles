@@ -55,6 +55,26 @@ runtime! debian.vim
 "set autowrite		" Automatically save before commands like :next and :make
 "set hidden		" Hide buffers when they are abandoned
 "set mouse=a		" Enable mouse usage (all modes)
+" Custom Vim Functions
+command -complete=custom,GetChecklists -nargs=1 Checklists call Checklists(<f-args>)
+fun GetChecklists(A,L,P)
+    return system("ls -1 ~/.vim/checklists/")
+endfunction
+
+function Checklists(file)
+	echo a:file
+    execute 'r' "~/.vim/checklists/" . a:file
+endfunction
+
+command -complete=custom,GetSkeletons -nargs=1 Skeletons call Skeletons(<f-args>)
+fun GetSkeletons(A,L,P)
+    return system("ls -1 ~/.vim/skeletons/")
+endfunction
+
+function Skeletons(file)
+	echo a:file
+    execute 'r' "~/.vim/skeletons/" . a:file
+endfunction
 
 " Source a global configuration file if available
 if filereadable("/etc/vim/vimrc.local")
@@ -189,6 +209,5 @@ nnoremap [[ :cprevious<CR>
 " Specifies file type specific configurations
 "" MarkDown
 autocmd FileType markdown setlocal spell
-autocmd BufWrite *.md :vimgrep /^# [A-Z]\{1,}/ %
 "" Text
 autocmd FileType text setlocal spell 
