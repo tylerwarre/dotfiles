@@ -1,0 +1,137 @@
+# Info
+- IP: 
+- Hostname: 
+- Domain: 
+- OS: 
+
+# Services
+|------|---------|-------------|
+| port | service | description |
+|------|---------|-------------|
+|      |         |             |
+|------|---------|-------------|
+
+# RDP Access
+|------|--------|
+| user | access |
+|------|--------|
+|      |        |
+|------|--------|
+
+# WinRM Access
+|------|--------|
+| user | access |
+|------|--------|
+|      |        |
+|------|--------|
+
+# SMB Shares
+## <user>
+|-------|-------------|-------------|
+| share | permissions | description |
+|-------|-------------|-------------|
+|       |             |             |
+|-------|-------------|-------------|
+
+# Shell Access
+
+# Admin Access
+
+# Windows Enumeration Checklist
+## Per Host
+```
+[ ] Get local users
+[ ] Get local groups
+[ ] Get OS version
+[ ] Get the local account policy
+[ ] Network Information
+  - Listening Ports
+  - IPs & Interfaces
+[ ] Installed Applications
+  - x86 Applications
+  - x64 Applications
+[ ] List Running Processes
+[ ] List Running Services
+[ ] List User Scheduled Tasks
+```
+
+## Per User
+### <user>
+```
+[ ] Look for passwords
+  - Check PowerShell History
+  - Check PSReadLine History
+  - Search Common Text Files
+  - Search SMB shares
+[ ] Get current user’s local groups
+[ ] Look for interesting files in C:\
+```
+
+# Windows Priv Escalation Checklist
+## Per Host
+### Standard User
+```
+[ ] Run winPEAS
+[ ] Try a client side attack
+```
+
+### Admin User
+```
+[ ] Dump NTLM hashes
+  - Extract NTLM hashes with mimikatz
+  - Extract NTLM hashes from Memory Dump
+  - Extract all Domain NTLM hashes via DC sync
+```
+
+## Whenever you acquire a Password
+```
+[ ] Spray passwords against non-owned users
+  - Check smb
+  - Check rdp
+  - Check winrm
+```
+
+## Per User
+### <user>
+```
+[ ] Spray user’s password against domain computers
+  - Check smb
+  - Check rdp
+  - Check winrm
+[ ] Spray user’s hash against domain computers
+  - Check smb
+  - Check rdp
+  - Check winrm
+[ ] Scheduled Task Binary Hijacking
+  1. Find all User Created Scheduled Tasks
+  2. Check the permissions of the executable
+  3. Overwrite the binary if you have permissions
+[ ] Scheduled Task DLL Hijacking
+  1. Find all User Created Scheduled Tasks
+  2. Get DLLs Loaded by a Process
+  3. Identify load order of DLL
+  4. Place malicious DLL earlier in load order
+[ ] Service Unquoted File Paths
+  1. Identify services with unquoted file paths
+  2. Filter to only services with spaces
+  3. Check file permission
+  4. Place a malicious binary in a resolved path with write access
+[ ] Abuse SeImpersonatePrivilege
+  1. Check for the permission SeImpersonatePrivilege
+  - Try GodPotato
+  - Try PrintSpoofer
+[ ] Check permissions of interesting files in C:\
+[ ] Attempt Pass the Hash 
+  [ ] Gain a Remote Shell via WMI with PtH
+  [ ] Gain a Remote Shell via Overpass the Hash
+  [ ] Try another Impacket tool
+[ ] Pivot to another computer
+  [ ] Gain a remote shell via WinRS
+  [ ] Gain a Remote Shell via PsExec
+  [ ] Gain a remote shell via DCOM
+  [ ] Gain a remote shell via WMI
+[ ] Leak current user’s hash
+[ ] Try an NTLM Relay Attack
+```
+
+# Notes
