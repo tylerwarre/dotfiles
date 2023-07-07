@@ -84,10 +84,10 @@ endif
 " Add line numbers to vim
 set number
 " Set tabs and shiftwidth to 4 spaces
+set autoindent
+set noexpandtab
 set tabstop=4
 set shiftwidth=4
-set softtabstop=4
-set smartindent
 " Uses vimrc in current directory
 set exrc
 " Removes error ding
@@ -121,6 +121,9 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'preservim/nerdtree'
 Plug 'jkramer/vim-checkbox'
 Plug 'dhruvasagar/vim-table-mode'
+Plug 'powerman/vim-plugin-AnsiEsc'
+"Plug 'godlygeek/tabular'
+"Plug 'preservim/vim-markdown'
 
 call plug#end()
 
@@ -139,6 +142,8 @@ set paste
 
 " YCM settings
 let g:ycm_confirm_extra_conf = 0
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
 "let g:ycm_filetype_blacklist={'notes': 1, 'unite': 1, 'tagbar': 1, 'pandoc': 1, 'qf': 1, 'vimwiki': 1, 'text': 1, 'infolog': 1, 'mail': 1}
 nnoremap <leader>d :YcmCompleter GetDoc<CR>
 
@@ -166,6 +171,10 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
 " vim-table-mode
 let g:table_mode_corner='|'
 nnoremap <silent> <leader>tt :call checkbox#ToggleCB()<cr>
+
+" vim-markdown
+"let g:vim_markdown_toc_autofit = 1
+"nnoremap <leader>t :Toc<cr>
 
 " Quick home/end accesss
 noremap L <end>

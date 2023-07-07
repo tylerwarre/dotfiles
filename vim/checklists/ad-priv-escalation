@@ -1,0 +1,36 @@
+# AD Priv Escalation Checklist
+## Per Domain
+### Standard User
+```
+[ ] Find shortest path to Domain Admin
+[ ] Look for Computers with User Sessions
+[ ] Dump Kerberos Hashes
+  - Steal AS-REP hashes
+  - Steal TGS-REP hashes
+```
+### Admin User
+```
+[ ] Create a Silver Ticket
+[ ] Create a Golden Ticket
+[ ] Extract all Domain hashes via DC Sync
+[ ] Extract credentials from a shadow copy
+  1. Create a shadow copy of a DC
+  2. Copy the windows\ntds\ntds.dit file from the shadow copy
+  3. Export the hklm\system registry hive
+  4. Extract hashes with impacket-secretsdump
+```
+
+## Per Host
+### Admin User
+```
+[ ] Extract Kerberos Tickets
+```
+
+## Per User
+### <user>
+```
+[ ] Modify permissions
+  - Add user to a group
+  - Check if you can start a SPN for another user
+  - Check if you can modify the permission of another user
+```

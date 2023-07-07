@@ -1,0 +1,39 @@
+# Windows Enumeration Checklist
+## Per Host
+```
+[ ] Get local users
+[ ] Get local groups
+[ ] Get OS version
+[ ] Dump env variables
+[ ] Get the local account policy
+[ ] Network Information
+  - Listening Ports
+  - IPs & Interfaces
+[ ] Installed Applications
+  - x86 Applications
+  - x64 Applications
+[ ] List Running Processes
+[ ] List Running Services
+[ ] List User Scheduled Tasks
+```
+
+## Per User
+### <user>
+```
+[ ] Look for passwords
+  - Check PowerShell History
+  - Check PSReadLine History
+  - Search Common Text Files
+  - Search SMB shares
+  - Search ENV vars
+[ ] Get current user’s local groups
+[ ] Look for interesting files in C:\
+```
+
+## Per Share
+### <share>
+```
+[ ] Dump a tree of the SMB share
+	1. Mount the smb share
+	2. run tree
+```

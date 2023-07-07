@@ -1,0 +1,20 @@
+# AD Enum Checklist
+## Per Domain
+```
+[ ] Enumerate AD with BloodHound
+  [ ] Enumerate domain users
+  [ ] Enumerate domain computers
+[ ] Get the default domain account policy
+```
+
+## Per Host
+```
+[ ] Search for gpp passwords
+```
+
+## Per User
+### <user>
+```
+[ ] Get user’s domain groups
+[ ] Find objects modifiable by the user
+```

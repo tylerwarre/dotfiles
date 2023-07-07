@@ -1,0 +1,30 @@
+# Linux Enum Checklist
+```
+[ ] Bruteforce ssh
+	- Check with wordlist
+	- Check with known passwords
+[ ] Current user & user’s groups
+[ ] Find User’s with shell access
+[ ] Get Hostname
+[ ] List OS Information
+  - Distribution
+  - Kernel Version
+[ ] List running processes
+[ ] Check Network Information
+  - Listening Ports
+  - Local firewall rules
+  - IPs & Interfaces
+  - Route table
+[ ] Check Installed packages
+[ ] Check kernel modules
+  - Loaded kernel modules
+  - Kernel module versions
+[ ] Check other filesystems
+  - available disks
+  - mounted file systems
+[ ] Look for writable files
+[ ] Check environment variables
+  - Print environment variables
+  - Read a user’s .bashrc
+[ ] Look at the Bash History
+```

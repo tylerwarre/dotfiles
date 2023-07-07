@@ -1,0 +1,17 @@
+# Web Enum Checklist
+```
+[ ] Enumerate directories and files
+  [ ] Enumerate with language specific wordlists
+[ ] Enumerate Website Technology
+  [ ] Search for technologies in searchsploit
+[ ] Search website title in searchsploit
+- If Using WordPress
+  [ ] Enumerate WordPress Plugins
+  [ ] Check for Vulnerable WordPress Plugins
+- Try Local File Inclusion 
+  [ ] Test for LFI
+  [ ] Use LFI to to get to get keys or passwords
+  [ ] Try to include a webshell
+  [ ] Fuzz with gobuster
+[ ] Try adding hostname to hosts file
+```

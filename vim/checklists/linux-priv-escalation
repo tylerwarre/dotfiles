@@ -1,0 +1,25 @@
+# Linux Priv Escalation Checklist
+```
+[ ] Run linPEAS
+[ ] Look for SUID files
+[ ] Look for Passwords
+  [ ] Check processes with pspy
+  [ ] Check environment variables
+  [ ] Check files in home directories
+  [ ] Check network traffic
+  [ ] Check git logs
+[ ] Use sudo
+  - Check sudo permissions
+  - Try changing users
+[ ] Modify a Cron Job
+[ ] Add a User
+  - Use useradd
+  - Write to /etc/passwd
+[ ] Look for Linux Capability Exploits
+[ ] Look for Kernel Exploits
+	- Search searchsploit
+	- Search grep.app
+[ ] Look for Vulnerable Apps
+	- Search searchsploit
+	- Search grep.app
+```

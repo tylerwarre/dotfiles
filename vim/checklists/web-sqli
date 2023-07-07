@@ -1,0 +1,18 @@
+# Web SQLi Checklist
+## Per Website
+```
+[ ] Use nmap if possible to determine the database type
+[ ] Check the website for any form submissions
+  - Use burp to ensure data is being sent upon submission
+```
+
+## Per Input Field
+```
+[ ] Test for time-based injections
+[ ] Try with a ' at the beginning
+[ ] Try without a ' at the beginning
+[ ] Try creating an error to see if a message is returned
+[ ] Pivot to a shell via RCE if possible
+[ ] Harvest database credentials
+[ ] Pivot to a web shell with file write commands
+```
