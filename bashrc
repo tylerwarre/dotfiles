@@ -122,9 +122,49 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+: '
+Proxy Configuration
+'
+export PROXY_URL=SET_ME
 
-export PATH=/opt/java/jdk-11.0.9.1+1/bin:$PATH
-export PATH=/opt/java/jre-11.0.9.1+1/bin:$PATH
+function set_proxy() {
+	read -s -p "Enter proxy password: " pass
+	echo ""
+	pass=$(percent_encode $pass)
+	export HTTP_PROXY="http://m83393:${pass}@${PROXY_URL}"
+	export HTTPS_PROXY=$HTTP_PROXY
+	export ALL_PROXY=$HTTP_PROXY
+	export http_proxy=$HTTP_PROXY
+	export https_proxy=$HTTP_PROXY
+	export all_proxy=$HTTP_PROXY
+}
+
+function percent_encode() {
+	input=$1
+	declare -A sub
+	sub=( ["!"]="%21" ["#"]="%23" ["$"]="%24" ["&"]="%26" ["'"]="%27" ["("]="%28" [")"]="%29" ["*"]="%2A" ["+"]="%2B" [","]="%2C" ["/"]="%2F" [":"]="%3A" [";"]="%3B" ["="]="%3D" ["?"]="%3F" ["@"]="%40" ["["]="%5B" ["]"]="%5D" )
+	enc=""
+	for (( i=0; i<${#input}; i++ )); do
+		char="${input:$i:1}"
+		if [[ -z ${sub[${char}]} ]]; then
+			enc="${enc}${char}"
+		else
+			enc="${enc}${sub[${char}]}"
+		fi
+	done
+	echo $enc
+}
+
+if [[ -z "${http_proxy}" ]]; then
+	set_proxy
+fi
+
+function apt_proxy() { apt --option Acquire::HTTP::Proxy="$http_proxy" $@ ; }
+alias sudo='sudo -E'
+alias apt='apt_proxy'
+
+export CC=clang
+export CXX=clang
 export VISUAL=vim
 export EDITOR=vim
 export GPG_TTY=$(tty)
