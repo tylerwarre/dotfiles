@@ -5,33 +5,25 @@
 - OS: 
 
 # Services
-|------|---------|-------------|
 | port | service | description |
 |------|---------|-------------|
 |      |         |             |
-|------|---------|-------------|
 
 # RDP Access
-|------|--------|
 | user | access |
 |------|--------|
 |      |        |
-|------|--------|
 
 # WinRM Access
-|------|--------|
 | user | access |
 |------|--------|
 |      |        |
-|------|--------|
 
 # SMB Shares
 ## <user>
-|-------|-------------|-------------|
 | share | permissions | description |
 |-------|-------------|-------------|
 |       |             |             |
-|-------|-------------|-------------|
 
 # Shell Access
 
@@ -63,7 +55,7 @@
   - Check PSReadLine History
   - Search Common Text Files
   - Search SMB shares
-[ ] Get current user’s local groups
+[ ] Get current userâ€™s local groups
 [ ] Look for interesting files in C:\
 ```
 
@@ -94,11 +86,11 @@
 ## Per User
 ### <user>
 ```
-[ ] Spray user’s password against domain computers
+[ ] Spray userâ€™s password against domain computers
   - Check smb
   - Check rdp
   - Check winrm
-[ ] Spray user’s hash against domain computers
+[ ] Spray userâ€™s hash against domain computers
   - Check smb
   - Check rdp
   - Check winrm
@@ -130,7 +122,7 @@
   [ ] Gain a Remote Shell via PsExec
   [ ] Gain a remote shell via DCOM
   [ ] Gain a remote shell via WMI
-[ ] Leak current user’s hash
+[ ] Leak current userâ€™s hash
 [ ] Try an NTLM Relay Attack
 ```
 
