@@ -1,9 +1,3 @@
-"""""""""""""""""""""""""""""""""""""
-"	Tyler Warren					"
-"	vim 9.2.0 						"
-"	v1.8 Updated 03-13-26			"
-"	Place at ~/.vim/vimrc			"
-"""""""""""""""""""""""""""""""""""""
 " Custom Vim Functions
 command -complete=custom,GetChecklists -nargs=1 Checklists call Checklists(<f-args>)
 fun GetChecklists(A,L,P)
@@ -65,6 +59,8 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set softtabstop=4
+" Tunn on syntax highlighting
+syntax on
 
 " Disable mouse
 set mouse=
@@ -87,11 +83,13 @@ set noundofile
 set nobackup
 set nowritebackup
 
+" Spelling
+"" MarkDown
+autocmd FileType markdown setlocal spell
+
 " Plugins
 "" Load all plugins
 "packloadall
 
 " vim-table-mode
 "let g:table_mode_corner='|'
-" vim-checkbox
-"nnoremap <silent> <leader>tt :call checkbox#ToggleCB()<cr>
