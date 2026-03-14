@@ -35,6 +35,20 @@ function Skeletons(file)
 	endif
 endfunction
 
+command MdTags :call MdTags()
+function! MdTags()
+        " 1. Perform search
+        :vimgrep /\*.\{-}\*/j **/*.md
+
+        let l:tags = []
+        " 2. Loop through matches
+        for item in getqflist()
+                call add(l:tags, substitute(item.text, '\*', '', 'g') . "\t" . bufname(item.bufnr) . "\t\/" . item.text)
+        endfor
+        call writefile(l:tags, 'tags', '')
+        echo "created tags file"
+endfunction
+
 " Global keymaps
 let mapleader = " "
 
