@@ -9,3 +9,4 @@ mv ~/.tmux/.tmux.conf ~/
 
 # Install git
 cp ./git/.gitconfig ~/
+git clone https://github.com/tylerwarre/htb.git
