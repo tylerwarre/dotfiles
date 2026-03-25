@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Install vim
-cp -r ~/my_data/dotfiles/vim ~/.vim
+cp -r ./vim ~/.vim
 
 # Install tmux
-cp -r ~/my_data/dotfiles/tmux ~/.tmux
+cp -r ./tmux ~/.tmux
 mv ~/.tmux/.tmux.conf ~/
