@@ -1,0 +1,43 @@
+{
+    "editor.fontFamily": "Tamzen",
+    "editor.fontSize": 16,
+    "debug.console.fontSize": 16,
+    "workbench.colorTheme": "Gruvbox Dark Hard",
+    "workbench.editor.showTabs": "single",
+    "terminal.integrated.fontSize": 16,
+    "editor.wordWrap": "on",
+    "workbench.secondarySideBar.defaultVisibility": "hidden",
+    "cmake.showConfigureWithDebuggerNotification": false,
+    "update.showReleaseNotes": false,
+    "vim.leader": " ",
+    "vim.normalModeKeyBindings": [
+        {
+            "before": ["<leader>", "f", "f"],
+            "commands": ["workbench.action.quickOpen"]
+        },
+        {
+            "before": ["]", "d"],
+            "commands": ["editor.action.marker.next"]
+        },
+        {
+            "before": ["[", "d"],
+            "commands": ["editor.action.marker.prev"]
+        },
+        {
+            "before": ["g", "r", "t"],
+            "commands": ["editor.action.goToTypeDefinition"]
+        },
+        {
+            "before": ["g", "r", "i"],
+            "commands": ["editor.action.goToDefinition"]
+        },
+        {
+            "before": ["g", "r", "r"],
+            "commands": ["editor.action.goToReferences"]
+        }
+    ],
+    "editor.autoClosingBrackets": "never",
+    "editor.autoClosingComments": "never",
+    "editor.autoClosingQuotes": "never",
+    "js/ts.autoClosingTags.enabled": false
+}
