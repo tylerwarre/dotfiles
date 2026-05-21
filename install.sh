@@ -22,4 +22,5 @@ mv wiki ~/
 cp ./gdb/* ~/
 
 # Install bash
+echo "" >> ~/.bashrc
 cat ./bash/.bashrc >> ~/.bashrc
