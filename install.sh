@@ -23,7 +23,7 @@ cp ./gdb/* ~/
 
 # Init VPN
 sudo systemctl stop openvpn@$(whoami)
-sudo cp lab-vpn.conf /etc/openvpn/client/
+sudo mv ~/lab-vpn.conf /etc/openvpn/client/
 sudo systemctl start openvpn-client@lab-vpn
 
 # Install bash
