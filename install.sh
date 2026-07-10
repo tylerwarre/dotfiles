@@ -2,6 +2,13 @@
 
 # Get github token
 read -sp "test: " token
+read -p "Install vpn? (y/n): " do_vpn
+
+# Install fonts
+sudo cp fonts/* /usr/local/share/fonts/
+
+# Install mate-terminal
+dconf load /org/mate/terminal/ < mate-terminal/mate-terminal-backup.txt
 
 # Install vim
 cp -r ./vim ~/.vim
@@ -40,9 +47,11 @@ mv wiki ~/
 cp ./gdb/* ~/
 
 # Init VPN
-sudo systemctl stop openvpn@$(whoami)
-sudo mv ~/lab-vpn.conf /etc/openvpn/client/
-sudo systemctl start openvpn-client@lab-vpn
+if [[ "$do_vpn" == "y" ]]; then
+  sudo systemctl stop openvpn@$(whoami)
+  sudo mv ~/lab-vpn.conf /etc/openvpn/client/
+  sudo systemctl start openvpn-client@lab-vpn
+fi
 
 # Install bash
 echo "" >> ~/.bashrc
