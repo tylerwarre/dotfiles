@@ -5,7 +5,7 @@ read -sp "test: " token
 read -p "Install vpn? (y/n): " do_vpn
 
 # Install fonts
-sudo cp fonts/* /usr/local/share/fonts/
+#sudo cp fonts/* /usr/local/share/fonts/
 
 # Install mate-terminal
 dconf load /org/mate/terminal/ < mate-terminal/mate-terminal-backup.txt
@@ -14,7 +14,7 @@ dconf load /org/mate/terminal/ < mate-terminal/mate-terminal-backup.txt
 cp -r ./vim ~/.vim
 
 # Install neovim
-curl -L -O https://github.com/neovim/neovim/releases/download/v0.12.3/nvim-linux-x86_64.tar.gz
+curl -L -O https://github.com/neovim/neovim/releases/download/v0.12.4/nvim-linux-x86_64.tar.gz
 tar xf nvim-linux-x86_64.tar.gz
 rm nvim-linux-x86_64.tar.gz
 sudo mv nvim-linux-x86_64/ /opt/nvim/
@@ -24,7 +24,7 @@ sudo ln -s /opt/nvim/bin/nvim /usr/local/bin/
 rm -rf ~/.config/nvim
 rm -rf ~/.local/share/nvim
 rm -r /usr/local/bin/nvim
-git clone --depth 1 https://github.com/tylerwarre/nvim.git ~/.config/nvim
+git clone --depth 1 --branch v0.12.4 https://github.com/tylerwarre/nvim.git ~/.config/nvim
 xargs -a ~/.config/nvim/pkglist.txt sudo apt install -y
 
 # Install tmux
