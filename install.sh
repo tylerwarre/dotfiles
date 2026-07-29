@@ -1,5 +1,9 @@
 #!/bin/bash
 
+function get_options {
+
+}
+
 # Get github token
 read -sp "test: " token
 read -p "Install vpn? (y/n): " do_vpn
@@ -56,3 +60,7 @@ fi
 # Install bash
 echo "" >> ~/.bashrc
 cat ./bash/.bashrc >> ~/.bashrc
+
+# TMP
+# Get Startup time: startup=$(loginctl session-status | grep -Po "(?<=Since: [A-Za-z]{3} \d{4}-\d{2}-\d{2} \d{2}:)\d+(?=:\d+)" | sed "s/^0*//")
+# Install crontab: (crontab -l 2>/dev/null; echo "$((startup + 10)) * * * * /usr/bin/notify-send -u critical -t 25000 'Pwnbox' 'Refresh your session'") | crontab -
