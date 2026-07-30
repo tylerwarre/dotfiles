@@ -79,8 +79,8 @@ install_fonts() {
 	{
 		# Check if fonts are already installed
 		local exists=1
-		for f in fonts/*; do
-			if [[ -f /usr/local/share/fonts/$f ]]; then
+		for f in $(ls -1 fonts/); do
+			if [[ ! -f /usr/local/share/fonts/$f ]]; then
 				exists=0
 				break
 			fi
