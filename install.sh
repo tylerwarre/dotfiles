@@ -551,12 +551,43 @@ get_wiki() {
 	exec 3>&-
 }
 
-install_vpn() {
-	if [[ "$do_vpn" == "y" ]]; then
-		sudo systemctl stop openvpn@$(whoami)
-		sudo mv ~/lab-vpn.conf /etc/openvpn/client/
-		sudo systemctl start openvpn-client@lab-vpn
+configure_vpn() {
+	local err=0
+	exec 3>$tmp
+	printf "\r[${C_BLUE}*${C_CLEAR}] Configuring VPN"
+
+	{
+		if [[ "$do_vpn" == "y" ]]; then
+			if [[ -f ~/lab-vpn.conf ]]; then
+				sudo systemctl stop openvpn@$(whoami)
+				err=$((err + 1))
+
+				sudo mv ~/lab-vpn.conf /etc/openvpn/client/
+				err=$((err + 1))
+
+				sudo systemctl start openvpn-client@lab-vpn
+				err=$((err + 1))
+			else
+				echo "Please provide vpn config at ~/lab-vpn.conf"
+				err=$((err + 1))
+			fi
+		fi
+	} >&3 2>&3
+
+	# Print module result
+	if [[ $err -eq 0 ]]; then
+		printf "\r[${C_GREEN}+${C_CLEAR}] Configuring VPN\n"
+	else
+		printf "\r[${C_RED}-${C_CLEAR}] Configuring VPN\n"
 	fi
+
+	# Print stdout/stderr if debugging
+	if [[ $debug -eq 1 ]]; then
+		cat $tmp | pr -T --indent=4
+	fi
+
+	# Close file descriptor
+	exec 3>&-
 }
 
 # TODO: Change to use custome file descriptor for grouped commands instead
@@ -581,6 +612,6 @@ install_gdb
 install_git
 install_nvim "v0.12.4"
 install_treesitter-python
-install_vpn
+configure_vpn
 
 echo "Don't forget to resetart your terminal ;)"
