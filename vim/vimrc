@@ -52,6 +52,119 @@ function! MdTags()
         echo "created tags file"
 endfunction
 
+fun s:_ValidateTable(selection)
+    let l:selection = a:selection
+
+    let l:i = 0
+    let l:cols = 0
+    while l:i < len(l:selection)
+        let l:selection[l:i] = substitute(l:selection[l:i], '.\{-}\(|\)', '\1', '')
+        let l:selection[l:i] = substitute(l:selection[l:i], '\s\+', '', 'g')
+
+        " Handle header row
+        if l:i == 1
+            if l:selection[l:i] =~? '^[|-]\+$'
+                let l:i += 1
+                continue
+            else
+                echo "Invalid header divider"
+                return []
+            endif
+        else
+            let l:selection[l:i] = split(l:selection[l:i], '|')
+        endif
+
+        if l:i == 0
+            let l:cols = len(l:selection[l:i])
+        elseif len(l:selection[l:i]) != l:cols
+            echo "Error in number of columns on line " . (l:i+1)
+            return []
+        endif
+
+        let l:i += 1
+
+    endwhile
+
+    " Remove header row
+    unlet l:selection[1]
+
+    return l:selection
+endfunction
+
+fun s:_GetColWidths(rows)
+    let l:lengths = []
+    let l:rows = a:rows
+
+    let l:i = 0
+    while l:i < len(l:rows)
+
+        let l:col_num = 0
+        for col in l:rows[l:i]
+            if l:i == 0
+                call add(l:lengths, len(col))
+            else
+                if len(col) > l:lengths[l:col_num]
+                    let l:lengths[l:col_num] = len(col)
+                endif
+            endif
+
+            let l:col_num += 1
+        endfor
+
+        let l:i += 1
+    endwhile
+
+    return l:lengths
+endfunction
+
+fun s:_BuildTable(rows, widths)
+    let l:rows = a:rows
+
+    let l:r = 0
+    while l:r < len(l:rows)
+
+        let l:c = 0
+        while l:c < len(l:rows[l:r])
+            let l:rows[l:r][l:c] = printf(' %-*s ', a:widths[l:c], l:rows[l:r][l:c])
+            let l:c += 1
+        endwhile
+
+        let l:rows[l:r] = '|' . join(l:rows[l:r], '|') . '|'
+
+        let l:r += 1
+    endwhile
+
+    let l:div = '|'
+    let l:i = 0
+    while l:i < len(a:widths)
+        let l:div = l:div . ' ' . repeat('-',a:widths[l:i]) . ' |'
+        let l:i += 1
+    endwhile
+
+    call insert(l:rows, l:div, 1)
+    " TODO make rows one string
+    let l:table = join(l:rows, '\n')
+
+    return l:table
+endfunction
+
+fun FormatTable() range
+    let l:selection = getline("'<", "'>")
+
+    " Ensure table is valid and divider removed
+    let l:rows = s:_ValidateTable(l:selection)
+    if len(l:rows) == 0
+        return
+    endif
+
+    " Get the width of each column
+    let l:widths = s:_GetColWidths(l:rows)
+
+    let l:table = s:_BuildTable(l:rows, l:widths)
+
+    echo l:table
+endfunction
+
 " Global keymaps
 let mapleader = " "
 
